@@ -36,3 +36,46 @@ def main():
 	button2 = GPIO.gpio_function(33)  #initialising port 33 for button 2
 	
 	print(button2)
+	
+	while(True):
+		
+		print("while loop is working")
+		
+		#function to make the LEDs increase by one when a button is pressed
+		
+		#make Leds increase from 0 to 1 if button1 is pressed
+		if GPIO.event_detected(29):#for button1
+			
+			counter= counter + 1
+                        
+			if counter ==8:
+				
+				counter=0
+
+			print(sequenceList[counter])
+			
+			GPIO.output(List2, sequenceList[counter])
+			
+			sleep(.1)  #sleep for 0.1 seconds
+
+			print("button1 works")	
+			
+			#make LEDs decrease by 1 with SW2 press
+			if GPIO.event_detected(31):
+				
+				counter-=1
+				
+				if counter ==-1:
+					
+					counter=7
+	
+				print(sequenceList[counter])
+				
+				GPIO.output(List2, sequenceList[counter])
+				
+				sleep(.3) #sleep for 0.3s
+	
+				print("button2 works")
+	
+			sleep(1) #sleep for 1s
+		
