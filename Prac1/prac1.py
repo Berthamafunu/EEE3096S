@@ -81,7 +81,9 @@ def main():
 			
 
 if __name__ == "__main__":
+	
 	try:  
+		
 		GPIO.setmode(GPIO.BOARD)  #initialising main loop so it does not iterate
 		
 		
@@ -95,7 +97,7 @@ if __name__ == "__main__":
 		
 		
 		#add edge detection and debouncing, out of loop to avoid error 
-		GPIO.add_event_detect(29, GPIO.RISING, bouncetime=200) #applying edge of detection on button1
+		GPIO.add_event_detect(29, GPIO.RISING, bouncetime=200)#applying edge of detection on button1
 		
 		
 		GPIO.add_event_detect(31, GPIO.RISING, bouncetime=200)#applying edge of detection on button2	
@@ -104,7 +106,9 @@ if __name__ == "__main__":
 		while True:
 			
 			
-			main()						
+			main()		
+			
+			
 				
 	except KeyboardInterrupt:  
 		
@@ -112,4 +116,12 @@ if __name__ == "__main__":
 		
 		
 		GPIO.cleanup()      #turning off the GPIO	
+		
+	except Exception as e:
+		
+		GPIO.cleanup()
+		
+		print("an error occured")
+		
+		print(e.message)	
 		
