@@ -78,4 +78,31 @@ def main():
 				print("button2 works")
 	
 			sleep(1) #sleep for 1s
+			
+
+if __name__ == "__main__":
+	try:  
+		GPIO.setmode(GPIO.BOARD)  #initialising main loop so it does not iterate
 		
+		
+		GPIO.setup(List2, GPIO.OUT, initial=GPIO.LOW)   #GPIO set to output
+		
+		
+		GPIO.setup(List1, GPIO.IN) #GPIO set to input
+		
+		
+		GPIO.setup(List1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+		
+		
+		#add edge detection and debouncing, out of loop to avoid error 
+		GPIO.add_event_detect(29, GPIO.RISING, bouncetime=200) #applying edge of detection on button1
+		
+		
+		GPIO.add_event_detect(31, GPIO.RISING, bouncetime=200)#applying edge of detection on button2	
+		
+    
+		while True:
+			
+			
+			main()						
+				
