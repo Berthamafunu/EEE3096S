@@ -3,32 +3,36 @@
 Python Practical Template
 Keegan Crankshaw
 Readjust this Docstring as follows:
-Names: <names>
-Student Number: <studnum>
-Prac: <Prac Num>
-Date: <dd/mm/yyyy>
+Names: <BERTHA NAFUNU>
+Student Number: <MFNBER001>
+Prac: <Prac 1>
+Date: <29/07/2019>
 """
 
-# import Relevant Librares
-import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO  #importing GPIO pins
 
-# Logic that you write
+from time import sleep   # importing  the sleep time command
+
+GPIO.setmode(GPIO.BOARD) #importing itertools
+
+List1 = [29, 31] #list of inputs that is the button1 and 2
+
+List2 = [11, 13, 15]    #list of the outputs that is the leds 1,2 and 3
+
+listflow =list(product([0,1], repeat=3)) #outputs of the 3 bit counter
+
+
 def main():
-    print("write your logic here")
-    #just check
-
-
-# Only run the functions if 
-if __name__ == "__main__":
-    # Make sure the GPIO is stopped correctly
-    try:
-        while True:
-            main()
-    except KeyboardInterrupt:
-        print("Exiting gracefully")
-        # Turn off your GPIOs here
-        GPIO.cleanup()
-    except Exception as e:
-        GPIO.cleanup()
-        print("Some other error occurred")
-        print(e.message)
+	print("Executing Program")
+	
+	counter = 0 #simple counter variable to remember progression in bit counter 
+	
+	sleep(1)  #setting sleeping time to 1second
+	
+	button1 = GPIO.gpio_function(31)  #initialising port 31 for button1
+	
+	print(button1)
+	
+	button2 = GPIO.gpio_function(33)  #initialising port 33 for button 2
+	
+	print(button2)
