@@ -15,6 +15,7 @@ import RPi.GPIO as GPIO
 # Logic that you write
 def main():
     print("write your logic here")
+    #just check
 
 
 # Only run the functions if 
